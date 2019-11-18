@@ -43,10 +43,13 @@
  * imparting obstacle avoidance functionality in turtlebot.
  *
  */
-#include "ros/ros.h"
+#ifndef INCLUDE_TURTLEBOT_VACUUM_CLEANER_WALKER_HPP_
+#define INCLUDE_TURTLEBOT_VACUUM_CLEANER_WALKER_HPP_
+
 #include <geometry_msgs/Twist.h>
 #include <sensor_msgs/LaserScan.h>
 #include <cstdlib>
+#include "ros/ros.h"
 #include "ros/console.h"
 
 /**
@@ -63,11 +66,13 @@ class Walker {
    * NodeHandle destructed will close down the node.
    */
   ros::NodeHandle nh_;
+  bool status;
   /// Declaring subscriber object to subscribe scan topic
   ros::Subscriber laser_;
   /// Declaring publisher object to publish cmd_vel topic
   ros::Publisher velocity_publisher;
-  /// Declaring object to Twist message to populate linear and angular velocities.
+  /// Declaring object to Twist message to populate linear
+  /// and angular velocities.
   geometry_msgs::Twist velocity;
   /**
    * @brief method to rotate turtlebot left
@@ -107,6 +112,7 @@ class Walker {
    */
   geometry_msgs::Twist collisionDetector(
       const sensor_msgs::LaserScan::ConstPtr &distance);
+
  public:
   /**
    * @brief constructor to initialize publisher and subscriber
@@ -120,7 +126,8 @@ class Walker {
    */
   explicit Walker(ros::NodeHandle &node);
   /**
-     * @brief destructor for walker class
-     */
+   * @brief destructor for walker class
+   */
   ~Walker();
 };
+#endif  // INCLUDE_TURTLEBOT_VACUUM_CLEANER_WALKER_HPP_

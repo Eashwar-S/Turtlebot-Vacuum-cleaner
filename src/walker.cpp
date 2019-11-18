@@ -31,6 +31,7 @@
 #include "turtlebot_vacuum_cleaner/walker.hpp"
 Walker::Walker(ros::NodeHandle &node)
 : nh_(node) {
+  status = false;
   /// Initializing publisher
   velocity_publisher = nh_.advertise<geometry_msgs::Twist>(
       "/mobile_base/commands/velocity", 100);
@@ -50,7 +51,6 @@ geometry_msgs::Twist Walker::collisionDetector(
   ROS_DEBUG_STREAM_ONCE(minimumValue);
   auto maximumValue = distance->ranges[0];
   ROS_DEBUG_STREAM_ONCE(maximumValue);
-  bool status;
   ROS_INFO_STREAM_ONCE("Finding minimum distance within range");
   /// Accessing minimum range of the laser
   auto minimumRange = distance->range_min;
