@@ -1,0 +1,7 @@
+Command:
+$ cppcheck --enable=warning --std=c++11 --suppress=missingIncludeSystem $( find . -name *.cpp | grep -vE -e "^./build/" -e "^./vendor/" ) 
+
+Output:
+Checking src/turtlebot_vacuum_cleaner/src/walker.cpp...
+
+Used --enable=warning to avoid messages such as Missing include files.

@@ -1,0 +1,23 @@
+<launch>
+  <arg name="rosbagRecord"
+       default="false"/>
+  <arg name="world_file"
+       default="$(find turtlebot_vacuum_cleaner)/world/turtlebot.world"/>
+  <include file= "$(find turtlebot_gazebo)/launch/turtlebot_world.launch"> 
+      <arg name="world_file" 
+           value="$(arg world_file)"/>
+  </include>
+  <node name="walker" 
+        pkg="turtlebot_vacuum_cleaner" 
+        type="walker"
+        output="screen"
+        launch-prefix = "xterm -e" />
+  <node
+    pkg = "rosbag"
+    name = "record"
+    type = "record"
+    args = "-a --duration=30 -x /camera/(.*) -O $(find turtlebot_vacuum_cleaner)/results/walkernodeRecord.bag"
+    output = "screen"
+    launch-prefix = "xterm -e"
+    if = "$(arg rosbagRecord)" />  
+</launch>

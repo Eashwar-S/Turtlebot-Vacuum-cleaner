@@ -1,0 +1,10 @@
+Command: 
+$ cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
+
+Output:
+./src/turtlebot_vacuum_cleaner/include/turtlebot_vacuum_cleaner/walker.hpp:127:  Is this a non-const reference? If so, make const or use a pointer: ros::NodeHandle &node  [runtime/references] [2]
+Done processing ./src/turtlebot_vacuum_cleaner/include/turtlebot_vacuum_cleaner/walker.hpp
+Done processing ./src/turtlebot_vacuum_cleaner/src/walker.cpp
+Total errors found: 1
+
+By replacing the non-constant reference with const or pointers, it is giving errors. Since, the errors only of level 2, I ignored.
