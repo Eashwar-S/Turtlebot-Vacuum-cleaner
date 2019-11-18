@@ -43,7 +43,7 @@ cd catkin_ws
 source devel/setup.bash
 roslaunch turtlebot_vacuum_cleaner turtlebot_newworld.launch rosbagRecord:=true 
 ```
-This will record all the topics for 15 seconds and store it in rosbagRecord.bag file in results folder
+This will record all the topics for 30 seconds and store it in rosbagRecord.bag file in results folder
 
 ## How to playback .bag file
 Open a new terminal; and run the following commands:
@@ -65,7 +65,7 @@ source devel/setup.bash
 roslaunch turtlebot_vacuum_cleaner turtlebot_newworld.launch
 ```
 By default rosbag recording will not happen as the argument rosbagRecord by default is set to false in launch file.
-## SampleoOutput
+## SampleOutput
 In the terminal running rosbag
 ```
 [ INFO] [1574105034.562631674]: Connected to master at [localhost:11311]
